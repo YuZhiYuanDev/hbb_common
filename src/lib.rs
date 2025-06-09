@@ -427,7 +427,7 @@ pub const VER_TYPE_RUSTDESK_SERVER: &str = "rustdesk-server";
 
 pub fn version_check_request(typ: String) -> (VersionCheckRequest, String) {
     #[allow(unused)]
-    const URL: &str = env!("UPDATER_URL", "UPDATER_URL must be set").to_string();
+    const URL: &str = env!("UPDATER_URL", "UPDATER_URL must be set");
 
     use sysinfo::System;
     let system = System::new();
