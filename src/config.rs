@@ -674,6 +674,15 @@ impl Config {
             std::fs::create_dir_all(&path).ok();
             return path;
         }
+        #[cfg(target_os = "windows")]
+        {
+            if let Some(mut path) = dirs_next::data_dir() {
+                path.push(APP_NAME.read().unwrap().clone());
+                path.push("Logs");
+                std::fs::create_dir_all(&path).ok();
+                return path;
+            }
+        }
         if let Some(path) = Self::path("").parent() {
             let mut path: PathBuf = path.into();
             path.push("log");
